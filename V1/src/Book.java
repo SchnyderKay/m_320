@@ -1,11 +1,10 @@
 public class Book extends Medien{
     private int ISBN_Number;
 
-    public Book(String title, int year, double price, int ISBN_Number) {
-        super(title, year, price);
+    public Book(String title, int year, double price, String type, int ISBN_Number) {
+        super(title, year, price, type);
         this.ISBN_Number = ISBN_Number;
     }
-
 
     public int getISBN_Number() {
         return ISBN_Number;

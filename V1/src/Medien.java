@@ -3,10 +3,21 @@ public class Medien {
     private int year;
     private double price;
 
-    public Medien(String title, int year, double price) {
+    private String type;
+
+    public Medien(String title, int year, double price, String type) {
         this.title = title;
         this.year = year;
         this.price = price;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getTitle() {
