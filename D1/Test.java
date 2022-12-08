@@ -1,3 +1,5 @@
+package D1;
+
 import static org.junit.Assert.assertEquals;
 
 public class Test {

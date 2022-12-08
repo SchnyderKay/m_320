@@ -1,3 +1,5 @@
+package V1.src;
+
 public class CD extends Medien{
     private String bandname;
 

@@ -1,3 +1,5 @@
+package V1.src;
+
 public class DVD extends Medien{
 
     private int lengthInMin;

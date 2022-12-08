@@ -1,3 +1,5 @@
+package D1;
+
 public class Time {
     private int hour;
     private int minute;
