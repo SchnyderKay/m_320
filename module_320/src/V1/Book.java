@@ -1,6 +1,6 @@
 package V1;
 
-public class Book extends Medien{
+public class Book extends Medien {
     private int ISBN_Number;
 
     public Book(String title, int year, double price, String type, int ISBN_Number) {

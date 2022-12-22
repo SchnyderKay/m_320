@@ -49,17 +49,19 @@ public class MedienList {
     private CD addCD(String title, int year, double price, String type) {
         System.out.println("Please enter the bandname: ");
         String bandname = scanner.nextLine();
-        while (bandname.isBlank()){
+        while (bandname.isBlank()) {
             bandname = scanner.nextLine();
             System.out.print("");
         }
         return new CD(title, year, price, type, bandname);
     }
+
     private Book addBook(String title, int year, double price, String type) {
         System.out.println("Please enter the ISBN number: ");
         int ibsn_number = scanner.nextInt();
         return new Book(title, year, price, type, ibsn_number);
     }
+
     private DVD addDVD(String title, int year, double price, String type) {
         System.out.println("Please enter the length in min: ");
         int lengthInMin = scanner.nextInt();

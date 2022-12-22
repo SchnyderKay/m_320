@@ -16,27 +16,27 @@ public class Time {
         String stringMinute;
         String stringSecond;
 
-        if (hour <= 9){
-            stringHour = "0" + String.valueOf(hour);
-        }else{
+        if (hour <= 9) {
+            stringHour = "0" + hour;
+        } else {
             stringHour = String.valueOf(hour);
         }
 
-        if (minute <= 9){
-            stringMinute = "0" + String.valueOf(minute);
-        }else{
+        if (minute <= 9) {
+            stringMinute = "0" + minute;
+        } else {
             stringMinute = String.valueOf(minute);
         }
 
-        if (second <= 9){
-            stringSecond = "0" + String.valueOf(second);
-        }else{
+        if (second <= 9) {
+            stringSecond = "0" + second;
+        } else {
             stringSecond = String.valueOf(second);
         }
         return stringHour + ":" + stringMinute + ":" + stringSecond;
     }
 
-    public void setTime(int second, int minute, int hour){
+    public void setTime(int second, int minute, int hour) {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
@@ -47,9 +47,9 @@ public class Time {
     }
 
     public void setHour(int hour) {
-        if (hour >= 0 && hour <= 23){
+        if (hour >= 0 && hour <= 23) {
             this.hour = hour;
-        }else {
+        } else {
             throw new IllegalArgumentException("Invalide Hour!");
         }
     }
@@ -59,9 +59,9 @@ public class Time {
     }
 
     public void setMinute(int minute) {
-        if (minute >= 0 && minute <= 59){
+        if (minute >= 0 && minute <= 59) {
             this.minute = minute;
-        }else {
+        } else {
             throw new IllegalArgumentException("Invalide Minute!");
         }
     }
@@ -71,24 +71,24 @@ public class Time {
     }
 
     public void setSecond(int second) {
-        if (second >= 0 && second <= 59){
+        if (second >= 0 && second <= 59) {
             this.second = second;
-        }else {
+        } else {
             throw new IllegalArgumentException("Invalide Second!");
         }
     }
 
-    public Object nextSecond(){
+    public Object nextSecond() {
 
-        if (second >= 59){
+        if (second >= 59) {
             second = 0;
-            if (minute >= 59){
+            if (minute >= 59) {
                 minute = 0;
                 hour++;
-            }else{
+            } else {
                 minute++;
             }
-        }else{
+        } else {
             second++;
         }
 

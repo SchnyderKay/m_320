@@ -13,16 +13,16 @@ public class SmallProject {
         System.out.println("Donald ones said:");
         boolean isRunning = true;
         List<String> statements = readFile();
-        Scanner sc= new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        while (isRunning){
+        while (isRunning) {
             int random_int = new Random().nextInt(statements.size() + 1);
             System.out.println(statements.get(random_int));
             System.out.println("- Donald J. Trump");
             System.out.println("New statement? (Yes/No)");
             String userInput = sc.nextLine();
 
-            if (!userInput.equalsIgnoreCase("yes")){
+            if (!userInput.equalsIgnoreCase("yes")) {
                 isRunning = false;
             }
 

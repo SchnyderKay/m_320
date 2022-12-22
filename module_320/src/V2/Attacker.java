@@ -1,20 +1,19 @@
 /**
  * @author Kay Schnyder
- * @param none
- *
+ * <p>
  * This class is the attacker class, which contain the function jogTraining and playing (polymorphism) and the whole class extends the Players Class.
  */
 
 package V2;
 
-public class Attacker extends Player{
+public class Attacker extends Player {
 
 
-    private void jogTraining(){
+    private void jogTraining() {
         System.out.println("jogging");
     }
 
-    public void playing(){
+    public void playing() {
         System.out.println("attacker");
     }
 }

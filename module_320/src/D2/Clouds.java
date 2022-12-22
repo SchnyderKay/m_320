@@ -1,18 +1,18 @@
 /**
  * @author Kay Schnyder
  * @parameters none
- *
+ * <p>
  * This function takes three circles and combines them to a cloud, which can be moved with the function moveClouds()
  */
 
 package D2;
 
-public class Clouds
-{
+public class Clouds {
     Circle circle1 = new Circle();
     Circle circle2 = new Circle();
     Circle circle3 = new Circle();
-    public void createCloud(){
+
+    public void createCloud() {
         circle1.changeColor("black");
         circle2.changeColor("black");
         circle3.changeColor("black");
@@ -34,14 +34,14 @@ public class Clouds
         circle3.makeVisible();
     }
 
-    public void moveClouds(){
-        for (;;){
-            for (int i = 0; i <= 200; i++){
+    public void moveClouds() {
+        for (; ; ) {
+            for (int i = 0; i <= 200; i++) {
                 circle1.slowMoveHorizontal(1);
                 circle2.slowMoveHorizontal(1);
                 circle3.slowMoveHorizontal(1);
             }
-            for (int i = 200; i >= 0; i--){
+            for (int i = 200; i >= 0; i--) {
                 circle1.slowMoveHorizontal(-1);
                 circle2.slowMoveHorizontal(-1);
                 circle3.slowMoveHorizontal(-1);

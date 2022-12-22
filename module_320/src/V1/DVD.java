@@ -1,6 +1,6 @@
 package V1;
 
-public class DVD extends Medien{
+public class DVD extends Medien {
 
     private int lengthInMin;
 
