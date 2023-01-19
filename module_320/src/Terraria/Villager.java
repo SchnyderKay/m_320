@@ -1,10 +1,11 @@
 package Terraria;
 
 public class Villager extends NPC{
-    boolean likes_environment;
+    final boolean likes_environment;
 
-    public Villager(String name, String description, String rarity, boolean friendly, int health, boolean likes_environment) {
-        super(name, description, rarity, friendly, health);
+    public Villager(String name, String description, String rarity, boolean friendly,
+                    int health, boolean likes_environment, String type) {
+        super(name, description, rarity, friendly, health, type);
         this.likes_environment = likes_environment;
     }
 }

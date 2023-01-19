@@ -36,4 +36,12 @@ public class Entry {
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

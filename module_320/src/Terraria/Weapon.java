@@ -1,29 +1,19 @@
 package Terraria;
 
 public class Weapon extends Item{
-    int attack_damage;
-    int durability;
+    final int attack_damage;
+    final int durability;
 
-    public Weapon(String name, String description, String rarity, NPC obtained_by, float selling_price, int attack_damage, int durability) {
-        super(name, description, rarity, obtained_by, selling_price);
+    public Weapon(String name, String description, String rarity, NPC obtained_by, float selling_price,
+                  int attack_damage, int durability, String type) {
+        super(name, description, rarity, obtained_by, selling_price, type);
         this.attack_damage = attack_damage;
         this.durability = durability;
     }
 
-    public int getAttack_damage() {
-        return attack_damage;
-    }
-
-    public void setAttack_damage(int attack_damage) {
-        this.attack_damage = attack_damage;
-    }
-
-    public int getDurability() {
-        return durability;
-    }
-
-    public void setDurability(int durability) {
-        this.durability = durability;
+    @Override
+    public void getDescriptionOfType() {
+        System.out.println("This is a weapon, which is used to subtract health from an NCP.");
     }
 }
 

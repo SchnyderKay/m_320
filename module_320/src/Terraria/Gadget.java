@@ -1,18 +1,16 @@
 package Terraria;
 
 public class Gadget extends Item{
-    int duration;
+    final String buff;
 
-    public Gadget(String name, String description, String rarity, NPC obtained_by, float selling_price, int duration) {
-        super(name, description, rarity, obtained_by, selling_price);
-        this.duration = duration;
+    public Gadget(String name, String description, String rarity, NPC obtained_by,
+                  float selling_price, String buff, String type) {
+        super(name, description, rarity, obtained_by, selling_price, type);
+        this.buff = buff;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
+    @Override
+    public void getDescriptionOfType() {
+        System.out.println("This is a gadget and it will give you a buff as long as you carry it.");
     }
 }
