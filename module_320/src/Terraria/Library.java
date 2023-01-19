@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Library {
-    final List<Entry> entries = new ArrayList<>();
+    final public List<Entry> entries = new ArrayList<>();
 
     public List<Entry> getEntries() {
         return entries;

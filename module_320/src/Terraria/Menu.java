@@ -3,7 +3,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
-    public void main_menu() {
+    public void mainMenu() {
         boolean is_running = true;
         Scanner scanner = new Scanner(System.in);
         Library library = new Library();
@@ -35,7 +35,7 @@ public class Menu {
         }
     }
 
-    public void getTypeDescription(){
+    private void getTypeDescription(){
         Item item = new Item(null, null, null, null, 0, null);
         Weapon weapon = new Weapon(null, null, null, null,
                 0, 0, 0, null);
@@ -64,13 +64,13 @@ public class Menu {
         }
 
     }
-    public void deleteEntry(Library library){
+    private void deleteEntry(Library library){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Whats the name of the entry which should be deleted?");
         String name = scanner.nextLine();
         library.deleteItem(name, library);
     }
-    public void createEntry(Library library) {
+    private void createEntry(Library library) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Whats the name of the entry?");
         String name = scanner.nextLine();
@@ -166,7 +166,7 @@ public class Menu {
         }
     }
 
-    public NPC getObtainedByNPC(String name, Library library) {
+    private NPC getObtainedByNPC(String name, Library library) {
         for (Entry entry : library.entries) {
             if (Objects.equals(entry.name, name)) {
                 if (Objects.equals(entry.type, "mob") || Objects.equals(entry.type, "boss")
