@@ -2,7 +2,17 @@ package Terraria;
 import java.util.Objects;
 import java.util.Scanner;
 
+/**
+ * @author kay
+ * @version 1.0
+ */
 public class Menu {
+
+    String name;
+    String description;
+    String rarity;
+    String type;
+
     public void mainMenu() {
         boolean is_running = true;
         Scanner scanner = new Scanner(System.in);
@@ -36,6 +46,7 @@ public class Menu {
     }
 
     private void getTypeDescription(){
+        // create all possible items to gain ability to get description
         Item item = new Item(null, null, null, null, 0, null);
         Weapon weapon = new Weapon(null, null, null, null,
                 0, 0, 0, null);
@@ -72,14 +83,7 @@ public class Menu {
     }
     private void createEntry(Library library) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Whats the name of the entry?");
-        String name = scanner.nextLine();
-        System.out.println("Whats the description of the entry?");
-        String description = scanner.nextLine();
-        System.out.println("Whats the rarity of the entry?");
-        String rarity = scanner.nextLine();
-        System.out.println("Whats the entry type? (weapon, armor, portion, gadget, mob, villager, boss)");
-        String type = scanner.nextLine().toLowerCase();
+        getEntryAttributes(scanner);
 
         switch (type) {
             case "mob", "villager", "boss" -> {
@@ -89,81 +93,125 @@ public class Menu {
                 int health = scanner.nextInt();
                 switch (type) {
                     case "mob" -> {
-                        System.out.println("Whats the biome of your mob?");
-                        String biome = scanner.nextLine();
-                        System.out.println("Whats your mobs attack damage?");
-                        int attack_damage = scanner.nextInt();
-                        library.newMob(type, name, description, rarity, friendly,
-                                health, attack_damage, biome, library);
+                        createNewMob(library, scanner, friendly, health);
                     }
                     case "villager" -> {
-                        System.out.println("Does the villager like the environment?");
-                        boolean likes_environment = scanner.nextBoolean();
-                        library.newVillager(type, name, description, rarity, friendly,
-                                health, likes_environment, library);
+                        createNewVillager(library, scanner, friendly, health);
                     }
                     case "boss" -> {
-                        System.out.println("Whats the incantation Item of your boss?");
-                        String incantation_item = scanner.nextLine();
-                        System.out.println("What are the stages of the boss?");
-                        String stages = scanner.nextLine();
-                        System.out.println("Whats your bosses attack damage?");
-                        int attack_damage = scanner.nextInt();
-                        library.newBoss(type, name, description, rarity, friendly, health,
-                                attack_damage, incantation_item, stages, library);
+                        createNewBoss(library, scanner, friendly, health);
                     }
                 }
             }
             case "weapon", "armor", "potion", "gadget" -> {
-                NPC obtained_by = null;
-                while (obtained_by == null) {
-                    System.out.println("Trough who was the item obtained?\n (new or existing NPC)");
-                    String new_or_existing = scanner.nextLine();
-                    if (new_or_existing.equalsIgnoreCase("new")) {
-                        System.out.println("Create a new entry first");
-                        createEntry(library);
-                    }
-                    System.out.println("Whats the name of the NPC?");
-                    String obtained_by_name = scanner.nextLine();
-                    obtained_by = getObtainedByNPC(obtained_by_name, library);
-                }
+                NPC obtained_by = getNpc(library, scanner);
                 System.out.println("Whats the selling price of the item?");
                 float selling_price = Float.parseFloat(scanner.nextLine());
                 switch (type) {
                     case "weapon" -> {
-                        System.out.println("Whats the attack damage of the weapon?");
-                        int attack_damage = scanner.nextInt();
-                        System.out.println("Whats the durability of the weapon?");
-                        int durability = scanner.nextInt();
-                        library.newWeapon(type, name, description, rarity, obtained_by,
-                                selling_price, attack_damage, durability, library);
+                        createNewWeapon(library, scanner, obtained_by, selling_price);
                     }
                     case "armor" -> {
-                        System.out.println("Whats the durability of the armor?");
-                        int durability = scanner.nextInt();
-                        System.out.println("Whats the defence of the armor?");
-                        int defence = scanner.nextInt();
-                        library.newArmor(type, name, description, rarity, obtained_by,
-                                selling_price, defence, durability, library);
+                        createNewArmor(library, scanner, obtained_by, selling_price);
                     }
                     case "potion" -> {
-                        System.out.println("Whats the potion effect?");
-                        String effect = scanner.nextLine();
-                        System.out.println("Whats the potion duration?");
-                        int duration = scanner.nextInt();
-                        library.newPotion(type, name, description, rarity, obtained_by,
-                                selling_price, effect, duration, library);
+                        createNewPotion(library, scanner, obtained_by, selling_price);
                     }
                     case "gadget" -> {
-                        System.out.println("Whats the gadget buff?");
-                        String buff = scanner.nextLine();
-                        library.newGadget(type, name, description, rarity, obtained_by,
-                                selling_price, buff, library);
+                        createNewGadget(library, scanner, obtained_by, selling_price);
                     }
                 }
             }
             default -> System.err.println("Please enter a valid type!");
         }
+    }
+
+    private void createNewGadget(Library library, Scanner scanner, NPC obtained_by, float selling_price) {
+        System.out.println("Whats the gadget buff?");
+        String buff = scanner.nextLine();
+        library.newGadget(type, name, description, rarity, obtained_by,
+                selling_price, buff, library);
+    }
+
+    private void createNewPotion(Library library, Scanner scanner, NPC obtained_by, float selling_price) {
+        System.out.println("Whats the potion effect?");
+        String effect = scanner.nextLine();
+        System.out.println("Whats the potion duration?");
+        int duration = scanner.nextInt();
+        library.newPotion(type, name, description, rarity, obtained_by,
+                selling_price, effect, duration, library);
+    }
+
+    private void createNewArmor(Library library, Scanner scanner, NPC obtained_by, float selling_price) {
+        System.out.println("Whats the durability of the armor?");
+        int durability = scanner.nextInt();
+        System.out.println("Whats the defence of the armor?");
+        int defence = scanner.nextInt();
+        library.newArmor(type, name, description, rarity, obtained_by,
+                selling_price, defence, durability, library);
+    }
+
+    private void createNewWeapon(Library library, Scanner scanner, NPC obtained_by, float selling_price) {
+        System.out.println("Whats the attack damage of the weapon?");
+        int attack_damage = scanner.nextInt();
+        System.out.println("Whats the durability of the weapon?");
+        int durability = scanner.nextInt();
+        library.newWeapon(type, name, description, rarity, obtained_by,
+                selling_price, attack_damage, durability, library);
+    }
+
+    private NPC getNpc(Library library, Scanner scanner) {
+        NPC obtained_by = null;
+        while (obtained_by == null) {
+            System.out.println("Trough who was the item obtained?\n (new or existing NPC)");
+            String new_or_existing = scanner.nextLine();
+            if (new_or_existing.equalsIgnoreCase("new")) {
+                System.out.println("Create a new entry first");
+                createEntry(library);
+            }
+            System.out.println("Whats the name of the NPC?");
+            String obtained_by_name = scanner.nextLine();
+            obtained_by = getObtainedByNPC(obtained_by_name, library);
+        }
+        return obtained_by;
+    }
+
+    private void createNewBoss(Library library, Scanner scanner, boolean friendly, int health) {
+        System.out.println("Whats the incantation Item of your boss?");
+        String incantation_item = scanner.nextLine();
+        System.out.println("What are the stages of the boss?");
+        String stages = scanner.nextLine();
+        System.out.println("Whats your bosses attack damage?");
+        int attack_damage = scanner.nextInt();
+        library.newBoss(type, name, description, rarity, friendly, health,
+                attack_damage, incantation_item, stages, library);
+    }
+
+    private void createNewVillager(Library library, Scanner scanner, boolean friendly, int health) {
+        System.out.println("Does the villager like the environment?");
+        boolean likes_environment = scanner.nextBoolean();
+        library.newVillager(type, name, description, rarity, friendly,
+                health, likes_environment, library);
+    }
+
+    private void createNewMob(Library library, Scanner scanner, boolean friendly, int health) {
+        System.out.println("Whats the biome of your mob?");
+        String biome = scanner.nextLine();
+        System.out.println("Whats your mobs attack damage?");
+        int attack_damage = scanner.nextInt();
+        library.newMob(type, name, description, rarity, friendly,
+                health, attack_damage, biome, library);
+    }
+
+    private void getEntryAttributes(Scanner scanner) {
+        System.out.println("Whats the name of the entry?");
+        name = scanner.nextLine();
+        System.out.println("Whats the description of the entry?");
+        description = scanner.nextLine();
+        System.out.println("Whats the rarity of the entry?");
+        rarity = scanner.nextLine();
+        System.out.println("Whats the entry type? (weapon, armor, portion, gadget, mob, villager, boss)");
+        type = scanner.nextLine().toLowerCase();
     }
 
     private NPC getObtainedByNPC(String name, Library library) {
