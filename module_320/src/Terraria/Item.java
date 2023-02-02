@@ -1,8 +1,13 @@
 package Terraria;
 
-public class Item extends Entry{
+/**
+ * @author kay
+ * @version 1.0
+ */
+public class Item extends Entry {
     final NPC obtained_by;
     final float selling_price;
+
     public Item(String name, String description, String rarity, NPC obtained_by,
                 float selling_price, String type) {
         super(name, description, rarity, type);
@@ -10,7 +15,7 @@ public class Item extends Entry{
         this.selling_price = selling_price;
     }
 
-    public void getDescriptionOfType(){
+    public void getDescriptionOfType() {
         System.out.println("This is an item, which is obtained by an NCP and will be used by the character.");
     }
 }

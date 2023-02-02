@@ -1,5 +1,9 @@
 package Terraria;
 
+/**
+ * @author kay
+ * @version 1.0
+ */
 public class Armor extends Item{
     final int defence;
     final int durability;

@@ -1,6 +1,10 @@
 package Terraria;
 
-public class NPC extends Entry{
+/**
+ * @author kay
+ * @version 1.0
+ */
+public class NPC extends Entry {
     final boolean friendly;
     final int health;
 

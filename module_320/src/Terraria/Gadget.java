@@ -1,6 +1,10 @@
 package Terraria;
 
-public class Gadget extends Item{
+/**
+ * @author kay
+ * @version 1.0
+ */
+public class Gadget extends Item {
     final String buff;
 
     public Gadget(String name, String description, String rarity, NPC obtained_by,

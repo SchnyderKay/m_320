@@ -1,6 +1,10 @@
 package Terraria;
 
-public class Mob extends NPC{
+/**
+ * @author kay
+ * @version 1.0
+ */
+public class Mob extends NPC {
     final int attack_damage;
     final String biomes;
 

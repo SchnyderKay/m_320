@@ -1,6 +1,10 @@
 package Terraria;
 
-public class Boss extends NPC{
+/**
+ * @author kay
+ * @version 1.0
+ */
+public class Boss extends NPC {
     final int attack_damage;
     final String incantation_item;
     final String stages;

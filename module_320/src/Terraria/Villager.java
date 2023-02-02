@@ -1,6 +1,10 @@
 package Terraria;
 
-public class Villager extends NPC{
+/**
+ * @author kay
+ * @version 1.0
+ */
+public class Villager extends NPC {
     final boolean likes_environment;
 
     public Villager(String name, String description, String rarity, boolean friendly,

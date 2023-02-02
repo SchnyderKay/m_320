@@ -1,6 +1,10 @@
 package Terraria;
 
-public class Potion extends Item{
+/**
+ * @author kay
+ * @version 1.0
+ */
+public class Potion extends Item {
     final String effect;
     final int duration;
 

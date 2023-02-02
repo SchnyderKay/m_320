@@ -1,4 +1,5 @@
 package Terraria;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -45,7 +46,7 @@ public class Menu {
         }
     }
 
-    private void getTypeDescription(){
+    private void getTypeDescription() {
         // create all possible items to gain ability to get description
         Item item = new Item(null, null, null, null, 0, null);
         Weapon weapon = new Weapon(null, null, null, null,
@@ -66,7 +67,7 @@ public class Menu {
                 5. Gadget
                 """);
         int option = scanner.nextInt();
-        switch (option){
+        switch (option) {
             case 1 -> item.getDescriptionOfType();
             case 2 -> weapon.getDescriptionOfType();
             case 3 -> armor.getDescriptionOfType();
@@ -75,12 +76,14 @@ public class Menu {
         }
 
     }
-    private void deleteEntry(Library library){
+
+    private void deleteEntry(Library library) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Whats the name of the entry which should be deleted?");
         String name = scanner.nextLine();
         library.deleteItem(name, library);
     }
+
     private void createEntry(Library library) {
         Scanner scanner = new Scanner(System.in);
         getEntryAttributes(scanner);

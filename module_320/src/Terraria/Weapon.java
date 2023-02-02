@@ -1,6 +1,10 @@
 package Terraria;
 
-public class Weapon extends Item{
+/**
+ * @author kay
+ * @version 1.0
+ */
+public class Weapon extends Item {
     final int attack_damage;
     final int durability;
 
